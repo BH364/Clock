@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        #container{
+            margin:100px 300px 0px 500px;
+            width:200px;
+            border:2px solid black;
+            font-size: 30px;
+            font-weight: 400;
+            padding: 20px;
+            text-align: center;
+        }
+        body{
+            background-color:pink;
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clock</h1>
+    <div id="container">
+    </div>
+    <script>
+      setInterval(displayTime,1000);
+      function displayTime(){
+        let time=new Date();
+        let hour=time.getHours();
+        let min=time.getMinutes();
+        let sec=time.getSeconds();
+        let day_night="AM";
+        if(hour>=12){
+            if(hour>12){
+                hour-=12;
+            }
+            day_night="PM";
+
+
+        }
+        else if(hour==0){
+            day_night="AM";
+        }
+        hour=hour<10?"0"+hour:hour;
+        min=min<10?"0"+min:min;
+        sec=sec<10?"0"+sec:sec;
+        let presentTime=hour+" : "+min+" : "+sec+" "+day_night;
+        document.getElementById("container").innerHTML=presentTime;
+      }
+      displayTime();
+
+    </script>
+</body>
+</html>
